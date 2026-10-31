@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+ xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+ xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+ xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+ id="Definitions_AiresSoftware" targetNamespace="https://aires-software.example/bpmn">
+ <bpmn:collaboration id="Collaboration_RegistroFacturas">
+  <bpmn:participant id="Participant_Empresa" name="Empresa usuaria" processRef="Process_RegistroFacturas"/>
+ </bpmn:collaboration>
+ <bpmn:process id="Process_RegistroFacturas" name="Registro y gestión de facturas" isExecutable="false">
+  <bpmn:laneSet id="LaneSet_Main">
+   <bpmn:lane id="Lane_Usuario" name="Usuario administrativo">
+    <bpmn:flowNodeRef>StartEvent_Necesidad</bpmn:flowNodeRef>
+    <bpmn:flowNodeRef>Task_Cargar</bpmn:flowNodeRef>
+    <bpmn:flowNodeRef>Task_Revisar</bpmn:flowNodeRef>
+    <bpmn:flowNodeRef>Gateway_Datos</bpmn:flowNodeRef>
+    <bpmn:flowNodeRef>Task_Corregir</bpmn:flowNodeRef>
+   </bpmn:lane>
+   <bpmn:lane id="Lane_Sistema" name="Sistema de reconocimiento">
+    <bpmn:flowNodeRef>Task_VerificarArchivo</bpmn:flowNodeRef>
+    <bpmn:flowNodeRef>Gateway_Archivo</bpmn:flowNodeRef>
+    <bpmn:flowNodeRef>Task_InformarArchivo</bpmn:flowNodeRef>
+    <bpmn:flowNodeRef>EndEvent_ArchivoInvalido</bpmn:flowNodeRef>
+    <bpmn:flowNodeRef>Task_Reconocer</bpmn:flowNodeRef>
+    <bpmn:flowNodeRef>Task_MostrarDatos</bpmn:flowNodeRef>
+    <bpmn:flowNodeRef>Task_Validar</bpmn:flowNodeRef>
+    <bpmn:flowNodeRef>Gateway_Validacion</bpmn:flowNodeRef>
+    <bpmn:flowNodeRef>Task_Observaciones</bpmn:flowNodeRef>
+    <bpmn:flowNodeRef>Task_Guardar</bpmn:flowNodeRef>
+    <bpmn:flowNodeRef>Task_Confirmar</bpmn:flowNodeRef>
+   </bpmn:lane>
+   <bpmn:lane id="Lane_Administracion" name="Administración / Control">
+    <bpmn:flowNodeRef>Task_Consultar</bpmn:flowNodeRef>
+    <bpmn:flowNodeRef>EndEvent_Registrada</bpmn:flowNodeRef>
+   </bpmn:lane>
+  </bpmn:laneSet>
+  <bpmn:startEvent id="StartEvent_Necesidad" name="Necesidad de registrar factura"/>
+  <bpmn:task id="Task_Cargar" name="Cargar imagen o PDF"/>
+  <bpmn:task id="Task_VerificarArchivo" name="Verificar formato y legibilidad"/>
+  <bpmn:exclusiveGateway id="Gateway_Archivo" name="¿Archivo válido?" default="Flow_ArchivoSi"/>
+  <bpmn:task id="Task_InformarArchivo" name="Informar error y solicitar otro archivo"/>
+  <bpmn:endEvent id="EndEvent_ArchivoInvalido" name="Fin del intento"/>
+  <bpmn:task id="Task_Reconocer" name="Reconocer datos de la factura"/>
+  <bpmn:task id="Task_MostrarDatos" name="Mostrar datos reconocidos"/>
+  <bpmn:task id="Task_Revisar" name="Revisar datos reconocidos"/>
+  <bpmn:exclusiveGateway id="Gateway_Datos" name="¿Datos completos y correctos?" default="Flow_DatosSi"/>
+  <bpmn:task id="Task_Corregir" name="Corregir datos observados"/>
+  <bpmn:task id="Task_Validar" name="Validar campos y posibles duplicados"/>
+  <bpmn:exclusiveGateway id="Gateway_Validacion" name="¿Validación aprobada?" default="Flow_ValidacionSi"/>
+  <bpmn:task id="Task_Observaciones" name="Informar observaciones para corregir"/>
+  <bpmn:task id="Task_Guardar" name="Guardar factura y detalles"/>
+  <bpmn:task id="Task_Confirmar" name="Confirmar registro"/>
+  <bpmn:task id="Task_Consultar" name="Consultar registro para controles y reportes"/>
+  <bpmn:endEvent id="EndEvent_Registrada" name="Factura registrada y disponible"/>
+  <bpmn:sequenceFlow id="Flow_01" sourceRef="StartEvent_Necesidad" targetRef="Task_Cargar"/>
+  <bpmn:sequenceFlow id="Flow_02" sourceRef="Task_Cargar" targetRef="Task_VerificarArchivo"/>
+  <bpmn:sequenceFlow id="Flow_03" sourceRef="Task_VerificarArchivo" targetRef="Gateway_Archivo"/>
+  <bpmn:sequenceFlow id="Flow_ArchivoNo" name="No" sourceRef="Gateway_Archivo" targetRef="Task_InformarArchivo">
+   <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${archivoValido == false}</bpmn:conditionExpression>
+  </bpmn:sequenceFlow>
+  <bpmn:sequenceFlow id="Flow_ArchivoErrorFin" sourceRef="Task_InformarArchivo" targetRef="EndEvent_ArchivoInvalido"/>
+  <bpmn:sequenceFlow id="Flow_ArchivoSi" name="Sí" sourceRef="Gateway_Archivo" targetRef="Task_Reconocer">
+   <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${archivoValido == true}</bpmn:conditionExpression>
+  </bpmn:sequenceFlow>
+  <bpmn:sequenceFlow id="Flow_04" sourceRef="Task_Reconocer" targetRef="Task_MostrarDatos"/>
+  <bpmn:sequenceFlow id="Flow_05" sourceRef="Task_MostrarDatos" targetRef="Task_Revisar"/>
+  <bpmn:sequenceFlow id="Flow_06" sourceRef="Task_Revisar" targetRef="Gateway_Datos"/>
+  <bpmn:sequenceFlow id="Flow_DatosNo" name="No" sourceRef="Gateway_Datos" targetRef="Task_Corregir">
+   <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${datosCorrectos == false}</bpmn:conditionExpression>
+  </bpmn:sequenceFlow>
+  <bpmn:sequenceFlow id="Flow_CorregirRevisar" sourceRef="Task_Corregir" targetRef="Task_Revisar"/>
+  <bpmn:sequenceFlow id="Flow_DatosSi" name="Sí" sourceRef="Gateway_Datos" targetRef="Task_Validar">
+   <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${datosCorrectos == true}</bpmn:conditionExpression>
+  </bpmn:sequenceFlow>
+  <bpmn:sequenceFlow id="Flow_07" sourceRef="Task_Validar" targetRef="Gateway_Validacion"/>
+  <bpmn:sequenceFlow id="Flow_ValidacionNo" name="No" sourceRef="Gateway_Validacion" targetRef="Task_Observaciones">
+   <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${validacionAprobada == false}</bpmn:conditionExpression>
+  </bpmn:sequenceFlow>
+  <bpmn:sequenceFlow id="Flow_ObservacionesCorregir" sourceRef="Task_Observaciones" targetRef="Task_Corregir"/>
+  <bpmn:sequenceFlow id="Flow_ValidacionSi" name="Sí" sourceRef="Gateway_Validacion" targetRef="Task_Guardar">
+   <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${validacionAprobada == true}</bpmn:conditionExpression>
+  </bpmn:sequenceFlow>
+  <bpmn:sequenceFlow id="Flow_08" sourceRef="Task_Guardar" targetRef="Task_Confirmar"/>
+  <bpmn:sequenceFlow id="Flow_09" sourceRef="Task_Confirmar" targetRef="Task_Consultar"/>
+  <bpmn:sequenceFlow id="Flow_10" sourceRef="Task_Consultar" targetRef="EndEvent_Registrada"/>
+ </bpmn:process>
+ <bpmndi:BPMNDiagram id="BPMNDiagram_RegistroFacturas">
+  <bpmndi:BPMNPlane id="BPMNPlane_RegistroFacturas" bpmnElement="Collaboration_RegistroFacturas"/>
+ </bpmndi:BPMNDiagram>
+</bpmn:definitions>
