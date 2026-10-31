@@ -31,7 +31,7 @@ Proyecto académico de una aplicación que recibe facturas como imágenes o arch
 Los cambios se integran a `main` mediante Pull Request con revisión antes de la integración.
 
 ## Tablero ágil
-Se propone utilizar GitHub Projects con los estados **Por Hacer**, **En Progreso** y **Listo**, vinculando las tres historias de usuario del backlog.
+Se registraron las tres historias de usuario como Issues #2, #3 y #4. El tablero de GitHub Projects debe crearse y asociar esas historias con los estados **Por Hacer**, **En Progreso** y **Listo**.
 
 ## Declaración de uso de IA
 Se utilizó ChatGPT como apoyo para organizar la documentación, proponer el flujo BPMN, redactar historias de usuario y definir indicadores. El contenido fue contrastado con las entregas anteriores y ajustado para mantener la continuidad del caso. Las decisiones finales y la verificación de coherencia corresponden al estudiante.
