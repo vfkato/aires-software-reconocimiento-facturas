@@ -1,0 +1,4 @@
+ID,Prioridad,Historia de usuario,Criterios de aceptación,Estado
+HU-01,Alta,"Como usuario administrativo, quiero cargar una factura en imagen o PDF para iniciar su procesamiento sin transcribir todos los datos manualmente.","Acepta formatos definidos; informa archivos inválidos; conserva el archivo asociado al intento de carga.",Por Hacer
+HU-02,Alta,"Como usuario administrativo, quiero que el sistema reconozca los datos principales de la factura y me permita revisarlos para corregir errores antes de guardarlos.","Extrae campos disponibles; muestra valores; permite editar; no confirma datos sin revisión.",Por Hacer
+HU-03,Alta,"Como responsable de Administración, quiero validar y almacenar las facturas revisadas para consultarlas y utilizarlas en controles posteriores.","Valida campos obligatorios; advierte posibles duplicados; almacena factura y detalles; confirma y permite consulta.",Por Hacer
