@@ -28,7 +28,7 @@ Proyecto académico de una aplicación que recibe facturas como imágenes o arch
 - `feature/bpmn-facturas`: documentación del proceso BPMN.
 - `feature/backlog-control`: historias de usuario e indicadores.
 
-Los cambios se integran a `main` mediante Pull Request con revisión antes de la integración.
+Los cambios se integraron a `main` mediante el [Pull Request #1](https://github.com/vfkato/aires-software-reconocimiento-facturas/pull/1).
 
 ## Tablero ágil
 Se registraron las tres historias de usuario como Issues #2, #3 y #4. El tablero de GitHub Projects debe crearse y asociar esas historias con los estados **Por Hacer**, **En Progreso** y **Listo**.
