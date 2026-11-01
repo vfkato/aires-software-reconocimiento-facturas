@@ -31,10 +31,10 @@ Proyecto académico de una aplicación que recibe facturas como imágenes o arch
 Los cambios se integraron a `main` mediante el [Pull Request #1](https://github.com/vfkato/aires-software-reconocimiento-facturas/pull/1).
 
 ## Tablero ágil
-Se registraron las tres historias de usuario como Issues #2, #3 y #4. El tablero de GitHub Projects debe crearse y asociar esas historias con los estados **Por Hacer**, **En Progreso** y **Listo**.
+Se registraron las tres historias de usuario como Issues #2, #3 y #4. El tablero público [Aires Software — Gestión de Facturas | TPI UTN](https://github.com/users/vfkato/projects/2) las vincula con los estados **Por Hacer**, **En Progreso** y **Listo**.
 
 ## Declaración de uso de IA
 Se utilizó ChatGPT como apoyo para organizar la documentación, proponer el flujo BPMN, redactar historias de usuario y definir indicadores. El contenido fue contrastado con las entregas anteriores y ajustado para mantener la continuidad del caso. Las decisiones finales y la verificación de coherencia corresponden al estudiante.
 
 ## Estado de publicación
-Este repositorio contiene documentación académica del TPI. Las ramas, el tablero y la revisión por Pull Request se registrarán a medida que se completen efectivamente en GitHub.
+Este repositorio contiene la documentación académica del TPI. El Pull Request #1 fue integrado a `main` y el tablero público de seguimiento está disponible en el enlace indicado arriba.
