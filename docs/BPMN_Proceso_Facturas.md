@@ -44,5 +44,6 @@ Registrar una factura digital desde su carga hasta su almacenamiento y consulta,
 - **Error de almacenamiento:** la confirmación solo debe mostrarse si el guardado finalizó correctamente.
 
 ## Archivos del modelo
-- `BPMN_Registro_Facturas_Clarificado.svg`: diagrama visual completo.
-- `proceso_facturas_clarificado.bpmn`: modelo en formato BPMN 2.0, con Pools, Lanes, eventos, tareas, compuertas y flujos.
+- `BPMN_Vista_1_Carga_Reconocimiento.svg`: primera vista, con carga, verificación, decisión de archivo y reconocimiento.
+- `BPMN_Vista_2_Revision_Validacion.svg`: segunda vista, con revisión, corrección, validación, guardado y consulta.
+- `proceso_facturas_clarificado.bpmn`: modelo fuente en formato BPMN 2.0, con Pool, Lanes, eventos, tareas, compuertas y flujos.
