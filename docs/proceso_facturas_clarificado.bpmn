@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Def_Aires" targetNamespace="https://aires-software.example/bpmn">
+ <bpmn:collaboration id="Collab_Aires"><bpmn:participant id="Pool_Empresa" name="Empresa usuaria" processRef="Proceso_Facturas"/></bpmn:collaboration>
+ <bpmn:process id="Proceso_Facturas" name="Registro y gestión de facturas" isExecutable="false">
+  <bpmn:laneSet id="Carriles">
+   <bpmn:lane id="Lane_Usuario" name="Usuario administrativo"><bpmn:flowNodeRef>Inicio</bpmn:flowNodeRef><bpmn:flowNodeRef>CargarFactura</bpmn:flowNodeRef><bpmn:flowNodeRef>RevisarDatos</bpmn:flowNodeRef><bpmn:flowNodeRef>DecisionDatos</bpmn:flowNodeRef><bpmn:flowNodeRef>CorregirDatos</bpmn:flowNodeRef></bpmn:lane>
+   <bpmn:lane id="Lane_Sistema" name="Sistema de reconocimiento"><bpmn:flowNodeRef>VerificarArchivo</bpmn:flowNodeRef><bpmn:flowNodeRef>DecisionArchivo</bpmn:flowNodeRef><bpmn:flowNodeRef>InformarArchivoInvalido</bpmn:flowNodeRef><bpmn:flowNodeRef>FinIntento</bpmn:flowNodeRef><bpmn:flowNodeRef>ReconocerDatos</bpmn:flowNodeRef><bpmn:flowNodeRef>MostrarDatos</bpmn:flowNodeRef><bpmn:flowNodeRef>ValidarDatos</bpmn:flowNodeRef><bpmn:flowNodeRef>DecisionValidacion</bpmn:flowNodeRef><bpmn:flowNodeRef>InformarObservaciones</bpmn:flowNodeRef><bpmn:flowNodeRef>GuardarFactura</bpmn:flowNodeRef><bpmn:flowNodeRef>ConfirmarRegistro</bpmn:flowNodeRef></bpmn:lane>
+   <bpmn:lane id="Lane_Admin" name="Administración / Control"><bpmn:flowNodeRef>ConsultarRegistro</bpmn:flowNodeRef><bpmn:flowNodeRef>FinProceso</bpmn:flowNodeRef></bpmn:lane>
+  </bpmn:laneSet>
+  <bpmn:startEvent id="Inicio" name="Necesidad de registrar factura"/>
+  <bpmn:task id="CargarFactura" name="Cargar factura (imagen o PDF)"/>
+  <bpmn:task id="VerificarArchivo" name="Verificar formato y legibilidad"/>
+  <bpmn:exclusiveGateway id="DecisionArchivo" name="¿Archivo válido?" default="ArchivoSi"/>
+  <bpmn:task id="InformarArchivoInvalido" name="Informar error y solicitar otro archivo"/>
+  <bpmn:endEvent id="FinIntento" name="Fin del intento"/>
+  <bpmn:task id="ReconocerDatos" name="Reconocer datos de la factura"/>
+  <bpmn:task id="MostrarDatos" name="Mostrar datos reconocidos"/>
+  <bpmn:task id="RevisarDatos" name="Revisar datos reconocidos"/>
+  <bpmn:exclusiveGateway id="DecisionDatos" name="¿Datos completos y correctos?" default="DatosSi"/>
+  <bpmn:task id="CorregirDatos" name="Corregir datos observados"/>
+  <bpmn:task id="ValidarDatos" name="Validar campos y posibles duplicados"/>
+  <bpmn:exclusiveGateway id="DecisionValidacion" name="¿Validación aprobada?" default="ValidacionSi"/>
+  <bpmn:task id="InformarObservaciones" name="Informar observaciones"/>
+  <bpmn:task id="GuardarFactura" name="Guardar factura y detalles"/>
+  <bpmn:task id="ConfirmarRegistro" name="Confirmar registro"/>
+  <bpmn:task id="ConsultarRegistro" name="Consultar registro para controles y reportes"/>
+  <bpmn:endEvent id="FinProceso" name="Factura registrada y disponible"/>
+  <bpmn:sequenceFlow id="F01" sourceRef="Inicio" targetRef="CargarFactura"/>
+  <bpmn:sequenceFlow id="F02" sourceRef="CargarFactura" targetRef="VerificarArchivo"/>
+  <bpmn:sequenceFlow id="F03" sourceRef="VerificarArchivo" targetRef="DecisionArchivo"/>
+  <bpmn:sequenceFlow id="ArchivoNo" name="No" sourceRef="DecisionArchivo" targetRef="InformarArchivoInvalido"><bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">archivoValido = false</bpmn:conditionExpression></bpmn:sequenceFlow>
+  <bpmn:sequenceFlow id="F04" sourceRef="InformarArchivoInvalido" targetRef="FinIntento"/>
+  <bpmn:sequenceFlow id="ArchivoSi" name="Sí" sourceRef="DecisionArchivo" targetRef="ReconocerDatos"><bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">archivoValido = true</bpmn:conditionExpression></bpmn:sequenceFlow>
+  <bpmn:sequenceFlow id="F05" sourceRef="ReconocerDatos" targetRef="MostrarDatos"/>
+  <bpmn:sequenceFlow id="F06" sourceRef="MostrarDatos" targetRef="RevisarDatos"/>
+  <bpmn:sequenceFlow id="F07" sourceRef="RevisarDatos" targetRef="DecisionDatos"/>
+  <bpmn:sequenceFlow id="DatosNo" name="No" sourceRef="DecisionDatos" targetRef="CorregirDatos"><bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">datosCorrectos = false</bpmn:conditionExpression></bpmn:sequenceFlow>
+  <bpmn:sequenceFlow id="F08" sourceRef="CorregirDatos" targetRef="RevisarDatos"/>
+  <bpmn:sequenceFlow id="DatosSi" name="Sí" sourceRef="DecisionDatos" targetRef="ValidarDatos"><bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">datosCorrectos = true</bpmn:conditionExpression></bpmn:sequenceFlow>
+  <bpmn:sequenceFlow id="F09" sourceRef="ValidarDatos" targetRef="DecisionValidacion"/>
+  <bpmn:sequenceFlow id="ValidacionNo" name="No" sourceRef="DecisionValidacion" targetRef="InformarObservaciones"><bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">validacionAprobada = false</bpmn:conditionExpression></bpmn:sequenceFlow>
+  <bpmn:sequenceFlow id="F10" sourceRef="InformarObservaciones" targetRef="CorregirDatos"/>
+  <bpmn:sequenceFlow id="ValidacionSi" name="Sí" sourceRef="DecisionValidacion" targetRef="GuardarFactura"><bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">validacionAprobada = true</bpmn:conditionExpression></bpmn:sequenceFlow>
+  <bpmn:sequenceFlow id="F11" sourceRef="GuardarFactura" targetRef="ConfirmarRegistro"/>
+  <bpmn:sequenceFlow id="F12" sourceRef="ConfirmarRegistro" targetRef="ConsultarRegistro"/>
+  <bpmn:sequenceFlow id="F13" sourceRef="ConsultarRegistro" targetRef="FinProceso"/>
+ </bpmn:process>
+ <bpmndi:BPMNDiagram id="Diagrama_Aires"><bpmndi:BPMNPlane id="Plano_Aires" bpmnElement="Collab_Aires"/></bpmndi:BPMNDiagram>
+</bpmn:definitions>
