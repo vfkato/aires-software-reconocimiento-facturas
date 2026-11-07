@@ -10,16 +10,16 @@
   <bpmn:startEvent id="Inicio" name="Necesidad de registrar factura"/>
   <bpmn:task id="CargarFactura" name="Cargar factura (imagen o PDF)"/>
   <bpmn:task id="VerificarArchivo" name="Verificar formato y legibilidad"/>
-  <bpmn:exclusiveGateway id="DecisionArchivo" name="¿Archivo válido?" default="ArchivoSi"/>
+  <bpmn:exclusiveGateway id="DecisionArchivo" name="¿Archivo válido?" default="ArchivoNo"/>
   <bpmn:task id="InformarArchivoInvalido" name="Informar error y solicitar otro archivo"/>
   <bpmn:endEvent id="FinIntento" name="Fin del intento"/>
   <bpmn:task id="ReconocerDatos" name="Reconocer datos de la factura"/>
   <bpmn:task id="MostrarDatos" name="Mostrar datos reconocidos"/>
   <bpmn:task id="RevisarDatos" name="Revisar datos reconocidos"/>
-  <bpmn:exclusiveGateway id="DecisionDatos" name="¿Datos completos y correctos?" default="DatosSi"/>
+  <bpmn:exclusiveGateway id="DecisionDatos" name="¿Datos completos y correctos?" default="DatosNo"/>
   <bpmn:task id="CorregirDatos" name="Corregir datos observados"/>
   <bpmn:task id="ValidarDatos" name="Validar campos y posibles duplicados"/>
-  <bpmn:exclusiveGateway id="DecisionValidacion" name="¿Validación aprobada?" default="ValidacionSi"/>
+  <bpmn:exclusiveGateway id="DecisionValidacion" name="¿Validación aprobada?" default="ValidacionNo"/>
   <bpmn:task id="InformarObservaciones" name="Informar observaciones"/>
   <bpmn:task id="GuardarFactura" name="Guardar factura y detalles"/>
   <bpmn:task id="ConfirmarRegistro" name="Confirmar registro"/>
