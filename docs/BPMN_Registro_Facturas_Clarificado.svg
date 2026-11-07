@@ -1,97 +1,92 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="4200" height="1700" viewBox="0 0 4200 1700">
+<svg xmlns="http://www.w3.org/2000/svg" width="5200" height="1550" viewBox="0 0 5200 1550">
 <defs>
-  <marker id="a" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#264f72"/></marker>
-  <style>
-    .head{font: bold 46px Arial;fill:#173a59}
-    .lane{font:bold 31px Arial;fill:#214a6d}
-    .task{fill:#edf4f9;stroke:#315f86;stroke-width:6;rx:22}
-    .err{fill:#fff0f0;stroke:#c94b4b;stroke-width:6;rx:22}
-    .save{fill:#eaf6ee;stroke:#23965b;stroke-width:6;rx:22}
-    .tx{font: 27px Arial;fill:#17324d;text-anchor:middle}
-    .gw{fill:#fff3d6;stroke:#c58a1d;stroke-width:7}
-    .gq{font:bold 26px Arial;fill:#6b4b10;text-anchor:middle}
-    .lab{font:bold 24px Arial;fill:#264f72}
-    .flow{fill:none;stroke:#264f72;stroke-width:7;marker-end:url(#a);stroke-linejoin:round;stroke-linecap:round}
-  </style>
-</defs>
+<marker id="a" markerWidth="14" markerHeight="14" refX="11" refY="7" orient="auto"><path d="M0,0 L14,7 L0,14 z" fill="#244d70"/></marker>
+<style>
+.h{font: bold 46px Arial;fill:#173a59}.sub{font:26px Arial;fill:#536879}
+.l{font:bold 28px Arial;fill:#214a6d;text-anchor:middle}
+.t{font:26px Arial;fill:#17324d;text-anchor:middle}
+.g{font:bold 24px Arial;fill:#765210;text-anchor:middle}
+.b{font:bold 22px Arial;fill:#244d70}
+.flow{fill:none;stroke:#244d70;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#a)}
+.task{fill:#edf4f9;stroke:#315f86;stroke-width:6}
+.err{fill:#fff0f0;stroke:#c94b4b;stroke-width:6}
+.ok{fill:#eaf6ee;stroke:#23965b;stroke-width:6}
+</style></defs>
 <rect width="100%" height="100%" fill="#fff"/>
-<text x="2100" y="68" class="head" text-anchor="middle">BPMN - Registro y gestion de facturas</text>
-<rect x="55" y="110" width="4090" height="1470" rx="26" fill="#fff" stroke="#315f86" stroke-width="8"/>
-<rect x="95" y="150" width="4010" height="430" fill="#f4f8fc" stroke="#9bb6cc" stroke-width="4"/>
-<rect x="95" y="580" width="4010" height="620" fill="#f8fafc" stroke="#9bb6cc" stroke-width="4"/>
-<rect x="95" y="1200" width="4010" height="340" fill="#f4f8fc" stroke="#9bb6cc" stroke-width="4"/>
-<rect x="95" y="150" width="330" height="430" fill="#e6eef5" stroke="#9bb6cc" stroke-width="4"/>
-<rect x="95" y="580" width="330" height="620" fill="#e6eef5" stroke="#9bb6cc" stroke-width="4"/>
-<rect x="95" y="1200" width="330" height="340" fill="#e6eef5" stroke="#9bb6cc" stroke-width="4"/>
-<text x="260" y="350" class="lane" text-anchor="middle">USUARIO</text><text x="260" y="392" class="lane" text-anchor="middle">ADMINISTRATIVO</text>
-<text x="260" y="860" class="lane" text-anchor="middle">SISTEMA DE</text><text x="260" y="902" class="lane" text-anchor="middle">RECONOCIMIENTO</text>
-<text x="260" y="1365" class="lane" text-anchor="middle">ADMINISTRACION</text><text x="260" y="1407" class="lane" text-anchor="middle">/ CONTROL</text>
-<!-- flows behind nodes -->
-<path class="flow" d="M575 350 H690"/>
-<path class="flow" d="M960 350 H1050 V865 H1130"/>
-<path class="flow" d="M1420 865 H1510"/>
-<path class="flow" d="M1710 865 H1850"/>
-<path class="flow" d="M1610 965 V1080 H1810"/>
-<path class="flow" d="M2100 1080 H2220"/>
-<path class="flow" d="M2130 865 H2250"/>
-<path class="flow" d="M2520 865 H2600 V350 H2690"/>
-<path class="flow" d="M2990 350 H3110"/>
-<path class="flow" d="M3210 450 V520 H3500 V350 H3540"/>
-<path class="flow" d="M3310 255 V205 H2840 V260"/>
-<path class="flow" d="M3210 450 V865 H3540"/>
-<path class="flow" d="M3850 865 H3950"/>
-<path class="flow" d="M4050 965 V1080"/>
-<path class="flow" d="M3870 1080 H3780 V350 H3840"/>
-<path class="flow" d="M4150 865 H4165"/>
-<path class="flow" d="M4300 865 H4340 V1370 H4380"/>
-<path class="flow" d="M4650 1370 H4780"/>
-<!-- start / tasks -->
-<circle cx="530" cy="350" r="42" fill="#fff" stroke="#23965b" stroke-width="8"/>
-<rect class="task" x="690" y="280" width="270" height="140"/>
-<text class="tx" x="825" y="335"><tspan x="825">Cargar factura</tspan><tspan x="825" dy="35">(imagen o PDF)</tspan></text>
-<rect class="task" x="1130" y="795" width="290" height="140"/>
-<text class="tx" x="1275" y="850"><tspan x="1275">Verificar formato</tspan><tspan x="1275" dy="35">y legibilidad</tspan></text>
-<polygon class="gw" points="1610,765 1710,865 1610,965 1510,865"/>
-<path d="M1578 833 L1642 897 M1642 833 L1578 897" stroke="#9a6a12" stroke-width="7"/>
-<text class="gq" x="1610" y="735">Archivo valido?</text>
-<rect class="task" x="1850" y="795" width="280" height="140"/>
-<text class="tx" x="1990" y="850"><tspan x="1990">Reconocer datos</tspan><tspan x="1990" dy="35">de la factura</tspan></text>
-<rect class="task" x="2250" y="795" width="270" height="140"/>
-<text class="tx" x="2385" y="850"><tspan x="2385">Mostrar datos</tspan><tspan x="2385" dy="35">reconocidos</tspan></text>
-<rect class="err" x="1810" y="1010" width="290" height="140"/>
-<text class="tx" x="1955" y="1065"><tspan x="1955">Informar error y</tspan><tspan x="1955" dy="35">pedir otro archivo</tspan></text>
-<circle cx="2220" cy="1080" r="42" fill="#fff" stroke="#cf4b4b" stroke-width="8"/><circle cx="2220" cy="1080" r="29" fill="none" stroke="#cf4b4b" stroke-width="6"/>
-<rect class="task" x="2690" y="280" width="300" height="140"/>
-<text class="tx" x="2840" y="335"><tspan x="2840">Revisar datos</tspan><tspan x="2840" dy="35">reconocidos</tspan></text>
-<polygon class="gw" points="3210,250 3310,350 3210,450 3110,350"/>
-<path d="M3178 318 L3242 382 M3242 318 L3178 382" stroke="#9a6a12" stroke-width="7"/>
-<text class="gq" x="3210" y="215">Datos completos y correctos?</text>
-<rect class="task" x="3540" y="280" width="300" height="140"/>
-<text class="tx" x="3690" y="335"><tspan x="3690">Corregir datos</tspan><tspan x="3690" dy="35">observados</tspan></text>
-<rect class="task" x="3540" y="795" width="310" height="140"/>
-<text class="tx" x="3695" y="850"><tspan x="3695">Validar campos y</tspan><tspan x="3695" dy="35">posibles duplicados</tspan></text>
-<polygon class="gw" points="4050,765 4150,865 4050,965 3950,865"/>
-<path d="M4018 833 L4082 897 M4082 833 L4018 897" stroke="#9a6a12" stroke-width="7"/>
-<text class="gq" x="4050" y="735">Validacion aprobada?</text>
-<rect class="err" x="3900" y="1010" width="290" height="140"/>
-<text class="tx" x="4045" y="1065"><tspan x="4045">Informar</tspan><tspan x="4045" dy="35">observaciones</tspan></text>
-<rect class="save" x="4165" y="795" width="0" height="0"/>
-<!-- final tasks -->
-<rect class="save" x="4165" y="795" width="0" height="0"/>
-<text x="1718" y="830" class="lab">SI</text><text x="1630" y="1005" class="lab">NO</text>
-<text x="3225" y="500" class="lab">SI</text><text x="3350" y="330" class="lab">NO</text>
-<text x="4065" y="990" class="lab">NO</text>
-<text x="4160" y="835" class="lab">SI</text>
-<rect class="save" x="4165" y="795" width="0" height="0"/>
-<rect class="save" x="4165" y="795" width="0" height="0"/>
-<rect class="save" x="4165" y="795" width="0" height="0"/>
-<rect class="save" x="4165" y="795" width="0" height="0"/>
-<rect class="save" x="4165" y="795" width="0" height="0"/>
-<rect class="save" x="4165" y="795" width="0" height="0"/>
-<!-- closing steps in lower right of system lane -->
-<rect class="save" x="4165" y="795" width="0" height="0"/>
-<rect class="save" x="4165" y="795" width="0" height="0"/>
-<rect class="save" x="4165" y="795" width="0" height="0"/>
-<text x="2100" y="1640" class="tx">Los flujos de excepcion vuelven a correccion; el registro solo se confirma despues de validar.</text>
-<text x="2100" y="1685" class="tx">El diagrama detallado con actividades de guardado, confirmacion y consulta queda en el BPMN 2.0 adjunto.</text>
+<text x="2600" y="62" class="h" text-anchor="middle">BPMN - Registro y gestion de facturas | Aires Software</text>
+<text x="2600" y="100" class="sub" text-anchor="middle">Recorrido completo: carga, reconocimiento, revision, validacion y consulta</text>
+<!-- pool and lanes -->
+<rect x="45" y="130" width="5110" height="1360" rx="28" fill="#fff" stroke="#315f86" stroke-width="8"/>
+<rect x="85" y="170" width="5030" height="420" fill="#f4f8fc" stroke="#9bb6cc" stroke-width="4"/>
+<rect x="85" y="590" width="5030" height="550" fill="#f8fafc" stroke="#9bb6cc" stroke-width="4"/>
+<rect x="85" y="1140" width="5030" height="310" fill="#f4f8fc" stroke="#9bb6cc" stroke-width="4"/>
+<rect x="85" y="170" width="280" height="420" fill="#e6eef5" stroke="#9bb6cc" stroke-width="4"/>
+<rect x="85" y="590" width="280" height="550" fill="#e6eef5" stroke="#9bb6cc" stroke-width="4"/>
+<rect x="85" y="1140" width="280" height="310" fill="#e6eef5" stroke="#9bb6cc" stroke-width="4"/>
+<text x="225" y="355" class="l">USUARIO</text><text x="225" y="395" class="l">ADMINISTRATIVO</text>
+<text x="225" y="825" class="l">SISTEMA DE</text><text x="225" y="865" class="l">RECONOCIMIENTO</text>
+<text x="225" y="1285" class="l">ADMINISTRACION</text><text x="225" y="1325" class="l">/ CONTROL</text>
+<!-- sequence flows behind elements -->
+<path class="flow" d="M590 370 H670"/>
+<path class="flow" d="M930 370 H1050 V840 H1120"/>
+<path class="flow" d="M1380 840 H1540"/>
+<path class="flow" d="M1700 840 H1850"/>
+<path class="flow" d="M1620 920 V1015 H1800"/>
+<path class="flow" d="M2120 1015 H2260"/>
+<path class="flow" d="M2110 840 H2190"/>
+<path class="flow" d="M2450 840 H2580 V370 H2570"/>
+<path class="flow" d="M2830 370 H2970"/>
+<path class="flow" d="M3130 370 H3290"/>
+<path class="flow" d="M3420 250 V190 H2700 V240"/>
+<path class="flow" d="M3050 450 V840 H3280"/>
+<path class="flow" d="M3560 840 H3710"/>
+<path class="flow" d="M3790 920 V960"/>
+<path class="flow" d="M3660 1030 H3600 V370 H3550"/>
+<path class="flow" d="M3870 840 H3970"/>
+<path class="flow" d="M4230 840 H4300"/>
+<path class="flow" d="M4560 840 H4600 V1280 H4550"/>
+<path class="flow" d="M4850 1280 H4950"/>
+<!-- start and task nodes -->
+<circle cx="520" cy="370" r="42" fill="#fff" stroke="#23965b" stroke-width="8"/>
+<rect class="task" x="670" y="300" width="260" height="140" rx="22"/>
+<text class="t" x="800" y="355"><tspan x="800">Cargar factura</tspan><tspan x="800" dy="34">(imagen o PDF)</tspan></text>
+<rect class="task" x="1120" y="770" width="260" height="140" rx="22"/>
+<text class="t" x="1250" y="825"><tspan x="1250">Verificar formato</tspan><tspan x="1250" dy="34">y legibilidad</tspan></text>
+<polygon points="1620,760 1700,840 1620,920 1540,840" fill="#fff3d6" stroke="#c58a1d" stroke-width="7"/>
+<path d="M1595 815 L1645 865 M1645 815 L1595 865" stroke="#9a6a12" stroke-width="7"/>
+<text class="g" x="1620" y="730">Archivo valido?</text>
+<rect class="task" x="1850" y="770" width="260" height="140" rx="22"/>
+<text class="t" x="1980" y="825"><tspan x="1980">Reconocer datos</tspan><tspan x="1980" dy="34">de la factura</tspan></text>
+<rect class="task" x="2190" y="770" width="260" height="140" rx="22"/>
+<text class="t" x="2320" y="825"><tspan x="2320">Mostrar datos</tspan><tspan x="2320" dy="34">reconocidos</tspan></text>
+<rect class="err" x="1800" y="945" width="320" height="140" rx="22"/>
+<text class="t" x="1960" y="1000"><tspan x="1960">Informar error y</tspan><tspan x="1960" dy="34">solicitar otro archivo</tspan></text>
+<circle cx="2260" cy="1015" r="42" fill="#fff" stroke="#c94b4b" stroke-width="8"/><circle cx="2260" cy="1015" r="29" fill="none" stroke="#c94b4b" stroke-width="6"/>
+<text class="sub" x="2260" y="1090" text-anchor="middle">Fin del intento</text>
+<rect class="task" x="2570" y="300" width="260" height="140" rx="22"/>
+<text class="t" x="2700" y="355"><tspan x="2700">Revisar datos</tspan><tspan x="2700" dy="34">reconocidos</tspan></text>
+<polygon points="3050,290 3130,370 3050,450 2970,370" fill="#fff3d6" stroke="#c58a1d" stroke-width="7"/>
+<path d="M3025 345 L3075 395 M3075 345 L3025 395" stroke="#9a6a12" stroke-width="7"/>
+<text class="g" x="3050" y="255">Datos completos y correctos?</text>
+<rect class="task" x="3290" y="300" width="260" height="140" rx="22"/>
+<text class="t" x="3420" y="355"><tspan x="3420">Corregir datos</tspan><tspan x="3420" dy="34">observados</tspan></text>
+<rect class="task" x="3280" y="770" width="280" height="140" rx="22"/>
+<text class="t" x="3420" y="825"><tspan x="3420">Validar campos y</tspan><tspan x="3420" dy="34">posibles duplicados</tspan></text>
+<polygon points="3790,760 3870,840 3790,920 3710,840" fill="#fff3d6" stroke="#c58a1d" stroke-width="7"/>
+<path d="M3765 815 L3815 865 M3815 815 L3765 865" stroke="#9a6a12" stroke-width="7"/>
+<text class="g" x="3790" y="730">Validacion aprobada?</text>
+<rect class="err" x="3660" y="960" width="280" height="140" rx="22"/>
+<text class="t" x="3800" y="1015"><tspan x="3800">Informar</tspan><tspan x="3800" dy="34">observaciones</tspan></text>
+<rect class="ok" x="3970" y="770" width="260" height="140" rx="22"/>
+<text class="t" x="4100" y="825"><tspan x="4100">Guardar factura</tspan><tspan x="4100" dy="34">y sus detalles</tspan></text>
+<rect class="task" x="4300" y="770" width="260" height="140" rx="22"/>
+<text class="t" x="4430" y="825"><tspan x="4430">Confirmar</tspan><tspan x="4430" dy="34">registro</tspan></text>
+<rect class="task" x="4550" y="1210" width="300" height="140" rx="22"/>
+<text class="t" x="4700" y="1265"><tspan x="4700">Consultar registro</tspan><tspan x="4700" dy="34">para controles y reportes</tspan></text>
+<circle cx="4990" cy="1280" r="42" fill="#fff" stroke="#23965b" stroke-width="8"/><circle cx="4990" cy="1280" r="29" fill="none" stroke="#23965b" stroke-width="6"/>
+<!-- yes / no branch labels -->
+<text x="1720" y="820" class="b">SI</text><text x="1635" y="960" class="b">NO</text>
+<text x="3145" y="350" class="b">NO</text><text x="3075" y="500" class="b">SI</text>
+<text x="3900" y="820" class="b">SI</text><text x="3805" y="950" class="b">NO</text>
+<text x="2100" y="1490" class="sub">Las compuertas muestran las decisiones; los retornos indican donde se corrigen los datos.</text>
 </svg>
