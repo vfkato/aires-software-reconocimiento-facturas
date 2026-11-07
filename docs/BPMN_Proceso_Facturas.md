@@ -1,41 +1,48 @@
 # Proceso BPMN — Registro y gestión de facturas
 
-## Pool
-**Empresa usuaria**
+## Objetivo del proceso
+Registrar una factura digital desde su carga hasta su almacenamiento y consulta, contemplando la verificación del archivo, el reconocimiento automático, la revisión humana y las validaciones previas al guardado.
 
-## Lanes
-- **Usuario administrativo:** carga la factura, revisa los datos reconocidos y corrige los campos observados.
-- **Sistema de reconocimiento:** verifica el archivo, extrae los datos, ejecuta validaciones, guarda y confirma.
-- **Administración / Control:** consulta los registros para controles y reportes.
+## Pool y carriles
+- **Pool: Empresa usuaria.** Representa a la organización que utiliza el sistema.
+- **Lane: Usuario administrativo.** Carga la factura, revisa los campos reconocidos y corrige los datos observados.
+- **Lane: Sistema de reconocimiento.** Comprueba el archivo, reconoce los datos, ejecuta las validaciones, guarda la información y confirma el registro.
+- **Lane: Administración / Control.** Consulta el registro confirmado para controles y reportes.
 
-## Flujo principal
-1. Evento de inicio: necesidad de registrar una factura.
-2. El usuario carga una imagen o un PDF.
-3. El sistema verifica el formato y la legibilidad.
-4. Compuerta exclusiva: **¿el archivo es válido?**
-   - **No:** informar el error, solicitar otro archivo y finalizar el intento.
-   - **Sí:** continuar con el reconocimiento.
-5. El sistema extrae fecha, CUIT, razón social, número de factura, importes, impuestos y total, cuando estén disponibles.
-6. El sistema muestra los datos reconocidos.
-7. El usuario revisa y corrige los campos.
-8. Compuerta exclusiva: **¿los datos están completos y son correctos?**
-   - **No:** volver a la revisión y corrección.
-   - **Sí:** continuar.
-9. El sistema valida campos obligatorios y controla posibles duplicados.
-10. Compuerta exclusiva: **¿la validación fue aprobada?**
-    - **No:** informar observaciones y devolver al usuario para corregir.
-    - **Sí:** guardar la factura y sus detalles.
-11. El sistema confirma el registro.
-12. Administración consulta el registro para controles y reportes.
-13. Evento de fin: factura registrada y disponible.
+## Recorrido normal
+1. **Inicio:** el usuario necesita registrar una factura.
+2. **Cargar factura:** selecciona una imagen o un archivo PDF.
+3. **Verificar formato y legibilidad:** el sistema controla que el archivo pueda procesarse.
+4. **Compuerta exclusiva - ¿Archivo válido?**
+   - **No:** el sistema informa el error y solicita otro archivo. Ese intento finaliza sin crear una factura definitiva.
+   - **Sí:** el sistema continúa con el reconocimiento.
+5. **Reconocer los datos:** se extraen, cuando están disponibles, fecha, CUIT, razón social, número de comprobante, importes, impuestos y total.
+6. **Mostrar los datos reconocidos:** el sistema presenta los campos para que el usuario pueda revisarlos.
+7. **Revisar los datos reconocidos:** el usuario comprueba la información.
+8. **Compuerta exclusiva - ¿Datos completos y correctos?**
+   - **No:** el usuario corrige los datos observados y vuelve a revisarlos.
+   - **Sí:** el sistema inicia las validaciones.
+9. **Validar campos y posibles duplicados:** se comprueban los campos obligatorios y las coincidencias que podrían indicar una factura repetida.
+10. **Compuerta exclusiva - ¿Validación aprobada?**
+    - **No:** el sistema informa las observaciones; el usuario corrige los datos y vuelve a revisarlos.
+    - **Sí:** el sistema guarda la factura y sus detalles.
+11. **Confirmar el registro:** el sistema informa que la operación finalizó correctamente.
+12. **Consultar el registro:** Administración / Control utiliza la información para controles y reportes.
+13. **Fin:** la factura queda registrada y disponible para consulta.
 
-## Excepciones contempladas
-- Archivo dañado, formato no admitido o imagen ilegible: no se crea un registro definitivo.
-- Datos incompletos o reconocidos incorrectamente: se permite la corrección antes de guardar.
-- Posible factura duplicada: se emite una advertencia para revisión.
-- Error durante el guardado: el sistema informa que la operación no se confirmó.
+## Cómo leer el diagrama
+- Los círculos representan eventos de inicio y fin.
+- Los rectángulos redondeados representan actividades realizadas por el usuario o por el sistema.
+- Los rombos con una X representan compuertas exclusivas: se elige una sola salida según la respuesta.
+- Las flechas continuas representan flujos de secuencia dentro del mismo Pool.
+- Las salidas de decisión están identificadas como **Sí** y **No**.
 
-## Criterios BPMN
-Las compuertas son exclusivas porque en cada validación se selecciona un único camino. Los flujos de secuencia conectan elementos dentro del Pool de la empresa. Si en otra versión se contrata un servicio externo de OCR, su interacción deberá modelarse en otro Pool mediante flujos de mensaje.
+## Tratamiento de excepciones
+- **Archivo ilegible, dañado o no admitido:** no se genera un registro definitivo; se solicita un nuevo archivo.
+- **Datos incompletos o incorrectos:** el usuario puede corregirlos antes de guardar.
+- **Posible duplicado o validación rechazada:** el sistema informa la observación y devuelve el proceso a la corrección.
+- **Error de almacenamiento:** la confirmación solo debe mostrarse si el guardado finalizó correctamente.
 
-El archivo `proceso_facturas.bpmn` contiene el modelo BPMN 2.0 para abrirlo en una herramienta compatible.
+## Archivos del modelo
+- `BPMN_Registro_Facturas_Clarificado.svg`: diagrama visual completo.
+- `proceso_facturas_clarificado.bpmn`: modelo en formato BPMN 2.0, con Pools, Lanes, eventos, tareas, compuertas y flujos.
