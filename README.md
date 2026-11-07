@@ -18,23 +18,26 @@ Proyecto académico de una aplicación que recibe facturas como imágenes o arch
 7. Confirmar el registro y permitir su consulta.
 
 ## Documentación
-- `docs/BPMN_Proceso_Facturas.md`: participantes, carriles, flujo y excepciones del proceso.
-- `docs/Backlog_Historias_de_Usuario.csv`: historias de usuario y criterios de aceptación.
-- `docs/Indicadores_de_Control.md`: indicadores, fórmulas, metas y frecuencia de revisión.
-- `docs/Modelo_Datos.md`: entidades y relaciones definidas inicialmente en la Entrega 3.
+- `docs/BPMN_Proceso_Facturas.md`: descripción del proceso, carriles, decisiones y excepciones.
+- `docs/BPMN_Vista_1_Carga_Reconocimiento.svg`: vista gráfica de carga y reconocimiento.
+- `docs/BPMN_Vista_2_Revision_Validacion.svg`: vista gráfica de revisión, validación y almacenamiento.
+- `docs/proceso_facturas_clarificado.bpmn`: modelo BPMN 2.0 fuente.
+- `docs/Backlog_Historias_de_Usuario.csv`: tres historias de usuario y criterios de aceptación.
+- `docs/Indicadores_de_Control.md`: indicadores, fórmulas, metas y frecuencia.
+- `docs/Modelo_Datos.md`: entidades y relaciones iniciales.
+- `docs/Plan_de_Pruebas.md`: escenarios de prueba funcional propuestos.
+- `docs/Seguimiento_Historias.md`: criterio de avance documental en GitHub Projects.
+- `docs/Respuesta_Observaciones_Docentes.md`: respuesta a las observaciones de la Entrega 4.
 
-## Organización del repositorio
-- `main`: versión estable.
-- `feature/bpmn-facturas`: documentación del proceso BPMN.
-- `feature/backlog-control`: historias de usuario e indicadores.
+## Control de versiones
+- `main`: versión integrada.
+- `feature/bpmn-facturas` y `feature/backlog-control`: ramas utilizadas en la primera integración.
+- `fix/bpmn-claridad-y-seguimiento`: rama con las correcciones posteriores a la devolución docente.
 
-Los cambios se integraron a `main` mediante el [Pull Request #1](https://github.com/vfkato/aires-software-reconocimiento-facturas/pull/1).
+El [Pull Request #1](https://github.com/vfkato/aires-software-reconocimiento-facturas/pull/1) integró la primera versión documental. El [Pull Request #5](https://github.com/vfkato/aires-software-reconocimiento-facturas/pull/5) presenta las correcciones y permanece abierto para una revisión real de otra persona.
 
 ## Tablero ágil
-Se registraron las tres historias de usuario como Issues #2, #3 y #4. El tablero público [Aires Software — Gestión de Facturas | TPI UTN](https://github.com/users/vfkato/projects/2) las vincula con los estados **Por Hacer**, **En Progreso** y **Listo**.
+Tablero público de [Aires Software — Gestión de Facturas](https://github.com/users/vfkato/projects/2). Contiene HU-01, HU-02 y HU-03 y utiliza los estados Por Hacer, En Progreso y Listo. Los estados describen el avance de análisis y documentación del TPI, no una implementación de software finalizada.
 
-## Declaración de uso de IA
-Se utilizó ChatGPT como apoyo para organizar la documentación, proponer el flujo BPMN, redactar historias de usuario y definir indicadores. El contenido fue contrastado con las entregas anteriores y ajustado para mantener la continuidad del caso. Las decisiones finales y la verificación de coherencia corresponden al estudiante.
-
-## Estado de publicación
-Este repositorio contiene la documentación académica del TPI. El Pull Request #1 fue integrado a `main` y el tablero público de seguimiento está disponible en el enlace indicado arriba.
+## Declaración de uso de Inteligencia Artificial
+Se utilizó ChatGPT como apoyo para organizar la documentación, proponer el flujo BPMN, redactar historias de usuario y definir indicadores. El contenido fue contrastado con las entregas anteriores y con las observaciones docentes. Se reorganizó el BPMN en dos vistas para facilitar su lectura, se revisó la correspondencia entre historias y proceso y se dejó el Pull Request #5 abierto para una revisión externa real. La responsabilidad de comprender y defender las decisiones en el coloquio corresponde al estudiante.
